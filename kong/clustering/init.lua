@@ -188,7 +188,9 @@ function _M:handle_cp_websocket()
   return self.child:handle_cp_websocket()
 end
 
-_M.serve_version_handshake = version_negotiation.serve_version_handshake
+function _M:serve_version_handshake()
+  return version_negotiation.serve_version_handshake(self.conf)
+end
 
 function _M:init_worker()
   self.plugins_list = assert(kong.db.plugins:get_handlers())
