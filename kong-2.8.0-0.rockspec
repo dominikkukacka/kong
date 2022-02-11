@@ -67,6 +67,7 @@ build = {
     ["kong.clustering.version_negotiation"] = "kong/clustering/version_negotiation.lua",
     ["kong.clustering.data_plane"] = "kong/clustering/data_plane.lua",
     ["kong.clustering.control_plane"] = "kong/clustering/control_plane.lua",
+    ["kong.clustering.utils"] = "kong/clustering/utils.lua",
     ["kong.clustering.compat.removed_fields"] = "kong/clustering/compat/removed_fields.lua",
 
     ["kong.cluster_events"] = "kong/cluster_events/init.lua",
