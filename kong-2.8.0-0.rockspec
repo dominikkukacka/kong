@@ -64,7 +64,9 @@ build = {
     ["kong.conf_loader.listeners"] = "kong/conf_loader/listeners.lua",
 
     ["kong.clustering"] = "kong/clustering/init.lua",
-    ["kong.clustering.version_negotiation"] = "kong/clustering/version_negotiation.lua",
+    ["kong.clustering.version_negotiation"] = "kong/clustering/version_negotiation/init.lua",
+    ["kong.clustering.version_negotiation.services_known"] = "kong/clustering/version_negotiation/services_known.lua",
+    ["kong.clustering.version_negotiation.services_requested"] = "kong/clustering/version_negotiation/services_requested.lua",
     ["kong.clustering.data_plane"] = "kong/clustering/data_plane.lua",
     ["kong.clustering.control_plane"] = "kong/clustering/control_plane.lua",
     ["kong.clustering.utils"] = "kong/clustering/utils.lua",
