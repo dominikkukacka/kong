@@ -72,6 +72,8 @@
   [#8544](https://github.com/Kong/kong/pull/8544)
 - Bumped resty.openssl from 0.8.5 to 0.8.6
   [#8545](https://github.com/Kong/kong/pull/8545)
+- Bumped lua-protobuf from 0.3.3 to 0.3.4
+  [#8591](https://github.com/Kong/kong/pull/8591)
 
 ### Fixes
 
