@@ -72,6 +72,8 @@
   [#8544](https://github.com/Kong/kong/pull/8544)
 - Bumped resty.openssl from 0.8.5 to 0.8.6
   [#8545](https://github.com/Kong/kong/pull/8545)
+- Bumped LuaSocket from 3.0-rc1 to 3.0.0
+  [#8590](https://github.com/Kong/kong/pull/8590)
 
 ### Fixes
 
