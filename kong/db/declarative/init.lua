@@ -402,6 +402,22 @@ function declarative.load_into_db(entities, meta)
 end
 
 
+local function begin_transaction(db)
+  if db.strategy == "postgres" then
+    db.connector:connect("read")
+    db.connector:query("BEGIN TRANSACTION ISOLATION LEVEL REPEATABLE READ READ ONLY;", "read")
+  end
+end
+
+
+local function commit_transaction(db)
+  if db.strategy == "postgres" then
+    db.connector:query("COMMIT;", "read")
+    db.connector:setkeepalive()
+  end
+end
+
+
 local function export_from_db(emitter, skip_ws, skip_disabled_entities)
   local schemas = {}
 
@@ -416,6 +432,8 @@ local function export_from_db(emitter, skip_ws, skip_disabled_entities)
   if not sorted_schemas then
     return nil, err
   end
+
+  begin_transaction(db)
 
   emitter:emit_toplevel({
     _format_version = "2.1",
@@ -440,6 +458,7 @@ local function export_from_db(emitter, skip_ws, skip_disabled_entities)
     local page_size = db[name].pagination.max_page_size
     for row, err in db[name]:each(page_size, GLOBAL_QUERY_OPTS) do
       if not row then
+        commit_transaction(db)
         kong.log.err(err)
         return nil, err
       end
@@ -472,6 +491,8 @@ local function export_from_db(emitter, skip_ws, skip_disabled_entities)
 
     ::continue::
   end
+
+  commit_transaction(db)
 
   return emitter:done()
 end
