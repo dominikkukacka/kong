@@ -96,6 +96,8 @@
 [#8566](https://github.com/Kong/kong/pull/8566)
 - **hmac-auth**: Removed deprecated signature format using `ngx.var.uri`
 [#8558](https://github.com/Kong/kong/pull/8558)
+- **Response Rate-Limiting**: add support for Redis SSL, through configuration properties
+  `redis_ssl` (can be set to `true` or `false`), `ssl_verify`, and `ssl_server_name`
 
 #### Clustering
 
